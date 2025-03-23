@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Phaser Game</title>
+  <!-- Include Phaser from a CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ddd;
+      font-family: sans-serif;
+    }
+    /* Landing page styling */
+    #landing-page {
+      background-color: #EDE8E1; /* PUTTY_PD background */
+      min-height: 100vh;
+      text-align: center;
+      padding: 40px;
+    }
+    #landing-page h2, #landing-page p {
+      color: #4D341A;
+    }
+    #landing-page a {
+      display: inline-block;
+      background-color: #4D341A;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    #landing-page button {
+      font-size: 20px;
+      padding: 15px 40px;
+      background-color: #6EA06E;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    /* Existing UI styling */
+    #ui-container {
+      width: 300px;
+      margin: 10px auto;
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    #game-container {
+      text-align: center;
+    }
+    canvas {
+      display: block;
+      margin: 0 auto;
+    }
+    /* Optional: terrain wrapper styling */
+    #terrain-wrapper {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Landing Page -->
+  <div id="landing-page">
+    <img src="images/title_cover.png" alt="Game Title" style="max-width: 30%; height: auto; margin-bottom: 30px;" />
+    <h2>Welcome to the Conservation Strategy Game!</h2>
+    <br><br>
+    <button id="startButton">Play Game</button>
+    <br><br>
+    <a href="images/Conservation_Game_UserManual.pdf" download style="display: inline-block; background-color: #4D341A; color: white; padding: 12px 24px; border-radius: 5px; text-decoration: none; margin-top: 80px;">
+      Download User Manual
+    </a>
+    <!-- Footer moved into landing-page -->
+  <footer style="text-align: center; padding-top: 30px; color: #4D341A; font-size: 14px;">
+    &copy; Diana Weinhold 2025, All Rights Reserved
+  </footer>
+
+  </div>
+
+  <!-- Game UI (initially hidden) -->
+  <div id="game-ui" style="display: none;">
+    <!-- This container is used by UserInput.js -->
+    <div id="ui-container">
+      <!-- The UI elements will be appended here by UserInput.js -->
+    </div>
+    <!-- Terrain image below the user input -->
+    <div id="terrain-wrapper">
+      <img src="images/terrain.png" alt="Terrain" style="max-width: 50%; height: auto;" />
+    </div>
+    <div id="game-container"></div>
+
+  </div>
+
+  <!-- Script files for your game -->
+  <script type="module" src="UserInput.js"></script>
+  <script type="module" src="grid.js"></script>
+  <script type="module" src="strategy.js"></script>
+  <script type="module" src="gameLogic.js"></script>
+  <script type="module" src="main.js"></script>
+
+  <!-- Simple script to switch from landing page to game UI -->
+  <script>
+    document.getElementById('startButton').addEventListener('click', function() {
+      document.getElementById('landing-page').style.display = 'none';
+      document.getElementById('game-ui').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
